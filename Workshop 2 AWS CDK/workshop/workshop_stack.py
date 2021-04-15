@@ -9,11 +9,11 @@ class WorkshopStack(core.Stack):
     def __init__(self, scope: core.Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        # bucket = Bucket(
-        #     scope=self,
-        #     id='WorkshopBucket',
-        #     bucket_name='cloudvisor-workshop-bucket'
-        # )
+        bucket = Bucket(
+            scope=self,
+            id='WorkshopBucket',
+            bucket_name='cloudvisor-workshop-bucket'
+        )
 
         function = Function(
             scope=self,
@@ -24,4 +24,4 @@ class WorkshopStack(core.Stack):
             code=Code.from_inline('def handler(*args, **kwargs): return 200')
         )
 
-        # bucket.add_object_created_notification(LambdaDestination(function))
+        bucket.add_object_created_notification(LambdaDestination(function))
