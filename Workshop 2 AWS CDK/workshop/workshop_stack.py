@@ -11,17 +11,17 @@ class WorkshopStack(core.Stack):
 
         bucket = Bucket(
             scope=self,
-            id='WorkshopBucket',
-            bucket_name='cloudvisor-workshop-bucket'
+            id='WorkshopBucketWithCDK',
+            bucket_name='cloudvisor-workshop-bucket-with-cdk'
         )
 
         function = Function(
             scope=self,
-            id='WorkshopFunction',
-            function_name='WorkshopFunction',
+            id='WorkshopFunctionWithCDK',
+            function_name='WorkshopFunctionWithCDK',
             runtime=Runtime.PYTHON_3_6,
             handler='index.handler',
-            code=Code.from_inline('def handler(*args, **kwargs): return 200')
+            code=Code.from_inline('def handler(*args, **kwargs): print(args); return 200')
         )
 
         bucket.add_object_created_notification(LambdaDestination(function))

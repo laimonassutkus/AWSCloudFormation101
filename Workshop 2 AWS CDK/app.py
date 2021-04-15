@@ -6,6 +6,6 @@ from workshop.workshop_stack import WorkshopStack
 
 
 app = core.App()
-WorkshopStack(app, "workshop")
+WorkshopStack(app, "WorkshopStackWithCDK")
 
 app.synth()
