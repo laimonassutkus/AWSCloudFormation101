@@ -1,0 +1,10 @@
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: 'simple-workshop-bucket-101'
+
+Outputs:
+  BucketARN:
+    Description: 'The ARN of the bucket.'
+    Value: !GetAtt S3Bucket.Arn
